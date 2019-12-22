@@ -1,0 +1,60 @@
+<!doctype html >
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" >
+    <title>akceleratory</title>
+    <link rel="StyleSheet" href="styles.css" type="text/css">
+    <script>
+        function goToId(name) {
+            window.location.href="#"+name;
+        } 
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <nav id="top-bar">
+            <ul>
+                <li onclick="goToId('wprowadzenie');">Wprowadzenie</li>
+                <li onclick="goToId('symulacja');">Symulacja</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="inside">
+        <article id="wprowadzenie">
+            <h2>Rzuty ukosne</h2>
+            <div class="row">
+                Rzuty ukosne sa spoko. Jak dzialaja dziwne sily to jeszcze bardziej.
+            </div>
+        </article>
+        <article id="symulacja">
+            <h2>Symulacja</h2>
+            <h3>Panel:</h3>
+            <form id="set_params">
+                Przyspieszenie (na osi x i y): <br>
+                <input id="force_x" type="number">
+                <input id="force_y" type="number">
+                <br>
+                Poczatkowa predkosc (na osi x i y): <br> 
+                <input id="v_x" type="number">
+                <input id="v_y" type="number">
+                <br>
+                Poczatkowe polozenie (na osi x i y): <br>
+                <input id="x" type="number">
+                <input id="y" type="number">
+                <br>
+                <button>Zastosuj</button>
+            </form>
+            <h3>Symulacja:</h3>
+            <canvas id="cnv" width="1200" height="600" style="margin-top: 2%;"></canvas>
+            <script src="script.js"></script>
+        </article>
+    </div>
+    <footer>
+    Michal Leszczynski
+    </footer>
+</body>
+</html>
