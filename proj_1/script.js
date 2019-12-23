@@ -1,25 +1,25 @@
 
-let is_board_on = true;
+let is_board_on = false;
 function turn_board() {
     goToId('symulacja');
     let form = document.getElementById('board');
     if(is_board_on)
     {
-        form.style.display = "none"
+        form.style.display = "none";
         is_board_on = false;
     }
     else
     {
-        form.style.display = "block"
+        form.style.display = "block";
         is_board_on = true;
     }
 }
-turn_board();
+document.getElementById('board').style.display = "none"
+
 
 
 let canvas = document.getElementById('cnv');
 let ctx = canvas.getContext('2d');
-
 
 function grid()
 {
