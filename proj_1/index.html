@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" >
-    <title>akceleratory</title>
+    <title>Ruch 2D</title>
     <link rel="StyleSheet" href="styles.css" type="text/css">
     <script>
         function goToId(name) {
@@ -25,36 +25,53 @@
 
     <div id="inside">
         <article id="wprowadzenie">
-            <h2>Rzuty ukosne</h2>
+            <h2>Ruch 2D</h2>
             <div class="row">
-                Rzuty ukosne sa spoko. Jak dzialaja dziwne sily to jeszcze bardziej.
+                Ruch polega na zmianie położenia w czasie. Pierwsza pochodna położenia po czasie to prędkość, a druga pochodna to przyśpieszenie. <br>
+                Z powodu częstej potrzeby opisywania konkretnych rodzajów ruchów, powstały nazwy je charakteryzujące:<br> 
+                Rzut poziomy - ruch ze stałą składową poziomą prędkości i zmienną składową pionową - opisuje rzut ciała na wprost w polu grawitacyjnym. <br>
+                Rzut ukośny - podobnie do rzutu poziomego z tą różnicą, że początkowa składowa pionowa prędkości jest niezerowa. <br> 
             </div>
         </article>
         <article id="symulacja">
             <h2>Symulacja</h2>
-            <h3>Panel:</h3>
-            <form id="set_params">
-                Przyspieszenie (na osi x i y): <br>
-                <input id="force_x" type="number">
-                <input id="force_y" type="number">
-                <br>
-                Poczatkowa predkosc (na osi x i y): <br> 
-                <input id="v_x" type="number">
-                <input id="v_y" type="number">
-                <br>
-                Poczatkowe polozenie (na osi x i y): <br>
-                <input id="x" type="number">
-                <input id="y" type="number">
-                <br>
-                <button>Zastosuj</button>
+            Panel pozwala zasymulować konfiguracje ruchu jednostajnie przyśpieszonego dla składowych kartezjańskich x i y. <br>
+            Umożliwia on wybranie początkowego położenia, prędkości oraz przyśpieszenia ciała. <br>
+            Na rysunku są przedstawione wektory prędkości dla odpowiednich składowych. <br>
+            
+            <form> 
+                <button  onclick="turn_board()">Pokaż/Schowaj panel</button> 
             </form>
+                <div id="board">    
+                        <form id="set_params"> 
+                            <br> 
+                            Przyśpieszenie (na osi x i y): <br> 
+                            <input id="force_x" type="number"> 
+                            <input id="force_y" type="number"> 
+                            <br> 
+                            Początkowa prędkość (na osi x i y): <br>
+                            <input id="v_x" type="number"> 
+                            <input id="v_y" type="number"> 
+                            <br> 
+                            Początkowe położenie (na osi x i y): <br> 
+                            <input id="x" type="number"> 
+                            <input id="y" type="number"> 
+                            <br> 
+                            <button>Zastosuj</button> 
+                        </form>  
+            </div>
+            <form> 
+                    Demo: <br> 
+                    <button  onclick="set_poziomy()">Rzut poziomy</button> 
+                    <button  onclick="set_ukosny()">Rzut ukośny</button> 
+                </form>
             <h3>Symulacja:</h3>
             <canvas id="cnv" width="1200" height="600" style="margin-top: 2%;"></canvas>
             <script src="script.js"></script>
         </article>
     </div>
     <footer>
-    Michal Leszczynski
+        Michał Leszczyński
     </footer>
 </body>
 </html>

@@ -1,15 +1,33 @@
-var canvas = document.getElementById('cnv');
-var ctx = canvas.getContext('2d');
+
+let is_board_on = true;
+function turn_board() {
+    let form = document.getElementById('board');
+    if(is_board_on)
+    {
+        form.style.display = "none"
+        is_board_on = false;
+    }
+    else
+    {
+        form.style.display = "block"
+        is_board_on = true;
+    }
+}
+turn_board();
+
+
+let canvas = document.getElementById('cnv');
+let ctx = canvas.getContext('2d');
 
 
 function grid()
 {
-    var h = canvas.height;
-    var w = canvas.width;
-    var range = 100;
-    var bl = 1;
-    var rangex = w/range;
-    var rangey = h/range;
+    let h = canvas.height;
+    let w = canvas.width;
+    let range = 100;
+    let bl = 1;
+    let rangex = w/range;
+    let rangey = h/range;
 	ctx.strokeStyle = "black";
 	for(i=1;i<=Math.floor(rangex*2);i++)
 	{
@@ -29,7 +47,6 @@ function grid()
 		ctx.closePath();
 		ctx.stroke();
 	}
-	// ctx.save();
 }
 
 let start_v_x = 10;
@@ -47,7 +64,6 @@ let y = start_y;
 let force_x = 0;
 let force_y = -1;
 
-const set_form = document.forms['set_params'];
 function reset() {
     x = Number(start_x);
     y = Number(canvas.height - start_y);
@@ -56,6 +72,7 @@ function reset() {
     v_y = Number(start_v_y);
 }
 
+const set_form = document.forms['set_params'];
 set_form.addEventListener('submit', function(e) {
     e.preventDefault();
     force_x = set_form.querySelector('input[id="force_x"]').value;
@@ -77,13 +94,13 @@ function draw() {
     let fixed = true;
     if( ! fixed)
     {
-        var dimension = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+        let dimension = [document.documentElement.clientWidth, document.documentElement.clientHeight];
         canvas.width = dimension[0];
         canvas.height = dimension[1];
     }
 
     
-    var ctx = canvas.getContext('2d');
+    let ctx = canvas.getContext('2d');
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);   
     grid();
@@ -133,3 +150,26 @@ function draw() {
 reset();
 draw();
 
+function set_ukosny() {
+    force_x = 0;
+    force_y = -4;
+
+    start_v_x = 30;
+    start_v_y = 40;
+
+    start_x = 50;
+    start_y = 50;
+    reset();
+}
+
+function set_poziomy() {
+    force_x = 0;
+    force_y = -2;
+
+    start_v_x = 40;
+    start_v_y = 0;
+
+    start_x = 50;
+    start_y = canvas.height - 100;
+    reset();
+}
