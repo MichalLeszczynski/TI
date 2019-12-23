@@ -1,6 +1,7 @@
 
 let is_board_on = true;
 function turn_board() {
+    goToId('symulacja');
     let form = document.getElementById('board');
     if(is_board_on)
     {
@@ -75,6 +76,7 @@ function reset() {
 const set_form = document.forms['set_params'];
 set_form.addEventListener('submit', function(e) {
     e.preventDefault();
+    goToId('symulacja');
     force_x = set_form.querySelector('input[id="force_x"]').value;
     force_y = set_form.querySelector('input[id="force_y"]').value;
 
@@ -151,6 +153,7 @@ reset();
 draw();
 
 function set_ukosny() {
+    goToId('symulacja');
     force_x = 0;
     force_y = -4;
 
@@ -163,6 +166,7 @@ function set_ukosny() {
 }
 
 function set_poziomy() {
+    goToId('symulacja');
     force_x = 0;
     force_y = -2;
 
