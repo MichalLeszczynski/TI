@@ -1,0 +1,56 @@
+body {
+    background-color: darkslategray;
+    color: pink;
+    font-family: 'Courier', Courier, monospace;
+    text-align: center;
+}
+
+table {
+    border:2px solid blueviolet;
+    border-collapse:collapse;
+    width: 60%;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+td, th {
+    border:2px solid blueviolet;
+    height: 50px;
+}
+
+button {
+    width: 50%;
+    background-color: blueviolet;
+    border: none;
+    color: pink;
+}
+
+button:hover {
+    background-color: green;
+}
+
+.data {
+
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+
+    
+}
+
+select.check {
+    background-color: blueviolet;
+    color: black;
+    padding: 20px;
+    width: 700px;
+    border: none;
+    font-size: 14px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+   select option {
+    padding: 10px;
+  }
