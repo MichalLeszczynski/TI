@@ -3,12 +3,20 @@ body {
     color: pink;
     font-family: 'Courier', Courier, monospace;
     text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
 }
+
+#cnv {
+    border: 1px solid black;
+    margin-top: 5px;
+  }
 
 table {
     border:2px solid blueviolet;
     border-collapse:collapse;
-    width: 60%;
+    width: 70%;
     text-align: center;
     margin-left:auto;
     margin-right:auto;
@@ -19,14 +27,14 @@ td, th {
     height: 50px;
 }
 
-button {
-    width: 50%;
+button, input {
+    width: 100%;
     background-color: blueviolet;
     border: none;
     color: pink;
 }
 
-button:hover {
+button:hover, input:hover {
     background-color: green;
 }
 
@@ -39,10 +47,10 @@ button:hover {
 }
 
 select.check {
-    background-color: blueviolet;
+    background-color:  blueviolet;
     color: black;
     padding: 20px;
-    width: 700px;
+    /* width: 700px; */
     border: none;
     font-size: 14px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
