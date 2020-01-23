@@ -61,6 +61,40 @@ function _list() {
    request.open("GET", api_url +"/list", true);
    request.send(null);
 }
+
+
+function _list_local() {
+   clear() 
+
+   const connection = window.indexedDB.open(dbName, 4);
+   connection.onupgradeneeded = function (event) {
+       event.target.transaction.abort();
+       console.log(event);
+   };
+   connection.onsuccess = function (event) {
+       const db = event.target.result;
+       const transaction = db.transaction(['results'], "readwrite");
+       const objectStore = transaction.objectStore('results');
+       const objectRequest = objectStore.getAll();
+       objectRequest.onerror = function (event) {
+           console.log("error");
+           console.log(event);
+       };
+
+       objectRequest.onsuccess = function (event) {
+           console.log("success - list");
+           var txt = "<table><thead>";
+            txt += "<th>Imię</th><th>Płeć</th><th>Poziom komfortu</th>";
+            txt += "</thead><tbody>";
+           objectRequest.result.forEach(element => {
+               console.log(data); 
+               txt += show_row_tab(element);
+           });
+           txt += "</tbody></table>"
+            document.getElementById('result').innerHTML = txt;
+       };
+   }
+}
   
 // Wstawianie rekordow do bazy
 function _ins_form() {
@@ -233,9 +267,6 @@ function _upd_form(form) {
   form1    += "<tr><td></td><td><input type='button' value='wyslij' onclick='_update(this.form, \"" + idmongo + "\")' ></input></td></tr>";
   form1    += "</table></form>";
   document.getElementById('data').innerHTML = form1;
-  document.getElementById('result').innerHTML = ''; 
-  document.getElementById('cnv').innerHTML = '';  
-
 }
   
 function _update(form, idmongo) {
@@ -563,3 +594,16 @@ function _init() {
 }
 
 _init()
+
+function _doc() {
+   clear()
+   var txt = ""
+   txt += "Jeśli nie wyświetla się nic poza przyciskiem 'Pomoc' to znaczy, że serwer jest nieaktywny. </br></br>"
+   txt += "Aby przetestować funkcjonalność off-line \
+   należy włączyć tryb offline (file -> tryb offline), \
+   dodać rekordy, można je przeglądnąć używając przycisku \
+   'Dane zgromadzone w lokalnej bazie', \
+   następnie w celu wysłania danych na serwer \
+   wystarczy wyłączyć tryb offline przeglądarki. </br>"
+   document.getElementById('result').innerHTML = txt;
+}

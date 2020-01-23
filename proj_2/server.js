@@ -68,6 +68,7 @@ router.put('/update/:id', function( req,res ) {
     if (err) throw err;
     db.collection(db_name).find().forEach( function (x) { x.comfort = parseInt(x.comfort); db.collection(db_name).save(x); })
     console.log("1 document updated");
+        res.send("Zaktualizowano.")
       });
   });
 
@@ -75,7 +76,8 @@ router.put('/update/:id', function( req,res ) {
     var query = { _id: new mongodb.ObjectID(req.params.id)};
     var cursor = db.collection(db_name).deleteMany(query, function(err, obj) {
     if (err) throw err;
-    console.log('deleting id:' + req.params.id);
+      console.log('deleting id:' + req.params.id);
+      res.send("Usunięto.")
       });
   });
 
@@ -130,8 +132,8 @@ router.get('/init', function(req, res) {
   console.log("sess", req.session.user);
 
   if (req.session.user) {
-    console.log("i am inside");
     for_logged = '<input type="button" value="Pobranie danych z bazy" onclick="_list()"/> \
+    <input type="button" value="Dane zgromadzone w lokalnej bazie" onclick="_list_local()"/> \
     <input type="button" value="Dodanie rekordu do bazy" onclick="_ins_form()"/> \
     <input type="button" value="Usuniecie rekordu z bazy" onclick="_del_list()"/> \
     <input type="button" value="Poprawa rekordu w bazie" onclick="_upd_list()"/> \
